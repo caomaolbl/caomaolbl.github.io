@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="简介二层网络攻击和欺骗行在网络实际环境中，其来源可概括为两个途径:人为实施，病毒或蠕虫。人为实施通常是指使用一些黑客的工具对网络进行扫描和嗅探， 获取管理帐户和相关密码，在网络上中安插木马，从而进行进一步窃取机密文件。攻击和欺骗过程往往比较隐蔽和安静，但对于信息安全要求高的企业危害是极大的。木马、蠕虫病毒的攻击不仅仅是攻击和欺骗，同时还会带来网络流量加大、设备CPU利用率过高、二层生成树环路、网络">
+<meta name="keywords" content="交换机安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cisco交换机安全">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/switch-security/index.html">
+<meta property="og:site_name" content="草帽小站">
+<meta property="og:description" content="简介二层网络攻击和欺骗行在网络实际环境中，其来源可概括为两个途径:人为实施，病毒或蠕虫。人为实施通常是指使用一些黑客的工具对网络进行扫描和嗅探， 获取管理帐户和相关密码，在网络上中安插木马，从而进行进一步窃取机密文件。攻击和欺骗过程往往比较隐蔽和安静，但对于信息安全要求高的企业危害是极大的。木马、蠕虫病毒的攻击不仅仅是攻击和欺骗，同时还会带来网络流量加大、设备CPU利用率过高、二层生成树环路、网络">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/bca6cfably1g60541wvh8j211b0ofad5.jpg">
+<meta property="og:updated_time" content="2019-08-21T06:32:16.758Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cisco交换机安全">
+<meta name="twitter:description" content="简介二层网络攻击和欺骗行在网络实际环境中，其来源可概括为两个途径:人为实施，病毒或蠕虫。人为实施通常是指使用一些黑客的工具对网络进行扫描和嗅探， 获取管理帐户和相关密码，在网络上中安插木马，从而进行进一步窃取机密文件。攻击和欺骗过程往往比较隐蔽和安静，但对于信息安全要求高的企业危害是极大的。木马、蠕虫病毒的攻击不仅仅是攻击和欺骗，同时还会带来网络流量加大、设备CPU利用率过高、二层生成树环路、网络">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/bca6cfably1g60541wvh8j211b0ofad5.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/08/15/switch-security/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Cisco交换机安全 | 草帽小站</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">草帽小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">落霞与孤鹜齐飞，秋水共长天一色</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/switch-security/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="caomaoLBL">
+      <meta itemprop="description" content="it运维，图片分享">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草帽小站">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">Cisco交换机安全
+
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-15 18:55:45" itemprop="dateCreated datePublished" datetime="2019-08-15T18:55:45+08:00">2019-08-15</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-21 14:32:16" itemprop="dateModified" datetime="2019-08-21T14:32:16+08:00">2019-08-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Cisco/" itemprop="url" rel="index"><span itemprop="name">Cisco</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Cisco/交换机/" itemprop="url" rel="index"><span itemprop="name">交换机</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>二层网络攻击和欺骗行在网络实际环境中，其来源可概括为两个途径:人为实施，病毒或蠕虫。人为实施通常是指使用一些黑客的工具对网络进行扫描和嗅探， 获取管理帐户和相关密码，在网络上中安插木马，从而进行进一步窃取机密文件。攻击和欺骗过程往往比较隐蔽和安静，但对于信息安全要求高的企业危害是极大的。木马、蠕虫病毒的攻击不仅仅是攻击和欺骗，同时还会带来网络流量加大、设备CPU利用率过高、二层生成树环路、网络瘫痪等现象。网络第二层的攻击是网络安全攻击者最容易实施， 也是最不容易被发现的安全威胁，它的目标是让网络失效或者通过获取诸如密码这样的敏感信息而危及网络用户的安全。因为任何一个合法用户都能获取一个以太网端口的访问权限，这些用户都有可能成为黑客，同时由于设计OSI模型的时候，允许不同通信层在相互不了解情况下也能进行工作，所以第二层的安全就变得至关重要。如果这一层受到黑客的攻击，网络安全将受到严重威胁，而且其他层之间的通信还会继续进行，同时任何用户都不会感觉到攻击已经危及应用层的信息安全。所以，仅仅基于认证(如IEEE 802.1x)和访问控制列表(ACL，Access Control Lists)的安全措施是无法防止本文中提到的来自网络第二层的安全攻击。一个经过认证的用户仍然可以有恶意，并可以很容易地执行本文提到的所有攻击。 目前这类攻击和欺骗工具已经非常成熟和易用。<br>这些攻击都来自于网络的第二层，主要包括以下几种:</p>
+<ul>
+<li>MAC地址泛洪攻击</li>
+<li>DHCP服务器欺骗攻击</li>
+<li>ARP欺骗</li>
+<li>IP/MAC地址欺骗</li>
+</ul>
+<a id="more"></a>
+
+<p>Cisco Catalyst 智能交换系列的创新特性针对这类攻击提供了全面的解决方案，将发生在网络第二层的攻击阻止在通往内部网的第一入口处，主要基于下面的几个关键的技术。</p>
+<ul>
+<li>Port Security</li>
+<li>DHCP Snooping</li>
+<li>Dynamic ARP Inspection (DAI)</li>
+<li>IP Source Guard</li>
+</ul>
+<p>下面主要针对目前这些非常典型的二层攻击和欺骗说明如何在思科交换机上组合运用和部署上述技术，从而防止在交换环境中的“中间人”攻击、 MAC/CAM攻击、 DHCP攻击、地址欺骗等，更具意义的是通过上面技术的部署可以简化地址管理， 直接跟踪用户IP和对应的交换机端口，防止IP地址冲突。同时对于大多数具有地址扫描、欺骗等特征的病毒可以有效的报警和隔离。</p>
+<h2 id="1-MAC地址泛滥攻击的防范"><a href="#1-MAC地址泛滥攻击的防范" class="headerlink" title="1. MAC地址泛滥攻击的防范"></a>1. MAC地址泛滥攻击的防范</h2><h3 id="MAC泛滥攻击的原理和危害"><a href="#MAC泛滥攻击的原理和危害" class="headerlink" title="MAC泛滥攻击的原理和危害"></a>MAC泛滥攻击的原理和危害</h3><p>交换机主动学习客户端的MAC地址，并建立和维护端口和MAC地址的对应表以此建立交换路径，这个表就是通常我们所说的CAM表。 CAM表的大小是固定的，不同的交换机的CAM表大小不同。MAC/CAM攻击是指利用工具产生欺骗MAC， 快速填满CAM表，交换机CAM表被填满。黑客发送大量带有随机源MAC地址的数据包，这些新MAC地址被交换机CAM学习，很快塞满MAC地址表，这时新目的MAC地址的数据包就会广播到交换机所有端口，交换机就像共享HUB一样工作，黑客可以用sniffer工具监听所有端口的流量。此类攻击不仅造成安全性的破坏，同时大量的广播包降低了交换机的性能。当交换机的CAM表被填满后，交换机以广播方式处理通过交换机的报文，这时攻击者可以利用各种嗅探攻击获取网络信息。更为严重的是，这种攻击也会导致所有邻接的交换机CAM表被填满，流量以泛洪方式发送到所有交换机的所有含有此VLAN的接口，从而造成交换机负载过大、网络缓慢和丢包甚至瘫痪。</p>
+<h3 id="防范方法"><a href="#防范方法" class="headerlink" title="防范方法"></a>防范方法</h3><p>限制单个端口所连接MAC地址的数目可以有效防止类似macof工具和SQL蠕虫病毒发起的攻击， macof可被网络用户用来产生随机源MAC地址和随机目的MAC地址的数据包，可以在不到10秒的时间内填满交换机的CAM表。 Cisco Catalyst交换机的端口安全(Port Security)和动态端口安全功能可被用来阻止MAC泛滥攻击。例如交换机连接单台工作站的端口，可以限制所学MAC地址数为1;连接IP电话和工作站的端口可限制所学MAC地址数为3:IP电话、工作站和IP电话内的交换机。通过端口安全功能，网络管理员也可以静态设置每个端口所允许连接的合法MAC地址，实现设备级的安全授权。动态端口安全则设置端口允许合法MAC地址的数目，并以一定时间内所学习到的地址作为合法MAC地址。</p>
+<p>配置Port Security可以控制：</p>
+<ul>
+<li>端口上最大可以通过的MAC地址数量</li>
+<li>端口上学习或通过哪些MAC地址</li>
+<li>对于超过规定数量的MAC处理进行违背处理</li>
+</ul>
+<p>端口上学习或通过哪些MAC地址，可以通过静态手工定义，也可以在交换机自动学习。交换机动态学习端口MAC，直到指定的MAC地址数量，交换机关机后重新学习。目前较新的技术是Sticky Port Security，交换机将学到的mac地址写到端口配置中，交换机重启后配置仍然存在。对于超过规定数量的MAC处理进行处理一般有三种方式(针对交换机型号会有所不同):</p>
+<ul>
+<li>Shutdown:端口关闭</li>
+<li>Protect:丢弃非法流量，不报警</li>
+<li>Restrict:丢弃非法流量，报警</li>
+</ul>
+<p>Port Security配置</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#端口模式access模式</span></span><br><span class="line">SW1(config-if)#switchport mode access</span><br><span class="line"><span class="comment">#使能port-security</span></span><br><span class="line">SW1(config-if)#switchport port-security</span><br><span class="line"><span class="comment">#端口允许最大mac地址数量设置为2</span></span><br><span class="line">SW1(config-if)#switchport port-security maximum 2</span><br><span class="line"><span class="comment">#用sticky自动粘贴绑定mac地址 </span></span><br><span class="line"><span class="comment">###如果一个mac地址被粘贴在这个端口 机器移动到其他端口也会触发惩罚行为</span></span><br><span class="line">SW1(config-if)#switchport port-security mac-address sticky </span><br><span class="line">SW1(config-if)#switchport port-security violation ?</span><br><span class="line">  protect   Security violation protect mode  #丢弃包，不报警</span><br><span class="line">  restrict  Security violation restrict mode #丢弃包，报警</span><br><span class="line">  shutdown  Security violation shutdown mode #关闭端口</span><br><span class="line"><span class="comment">#超过mac地址允许数量触发的惩罚措施为 关闭端口</span></span><br><span class="line">SW1(config-if)#switchport port-security violation shutdown</span><br><span class="line"><span class="comment">#设置errdisable接口自动恢复</span></span><br><span class="line">SW1(config)#errdisable recovery cause psecure-violation </span><br><span class="line"><span class="comment">#设置errdisable端口恢复时间间隔30s</span></span><br><span class="line">SW1(config)#errdisable recovery interval 30</span><br><span class="line"></span><br><span class="line">SW1#show port-security </span><br><span class="line">Secure<span class="built_in"> Port </span> MaxSecureAddr  CurrentAddr  SecurityViolation  Security Action</span><br><span class="line">                (Count)       (Count)          (Count)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">      Gi0/3              2            2                  0         Shutdown</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">Total Addresses <span class="keyword">in</span><span class="built_in"> System </span>(excluding one mac per port)     : 1</span><br><span class="line">Max Addresses limit <span class="keyword">in</span><span class="built_in"> System </span>(excluding one mac per port) : 4096</span><br><span class="line">  </span><br><span class="line">SW1#show port-security<span class="built_in"> address </span></span><br><span class="line">               Secure Mac<span class="built_in"> Address </span>Table</span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line">Vlan    Mac<span class="built_in"> Address </span>     <span class="built_in"> Type </span>                         Ports   Remaining Age</span><br><span class="line">                                                                   (mins)    </span><br><span class="line">----    -----------       ----                          -----   -------------</span><br><span class="line">  10    0050.7966.6803    SecureSticky                  Gi0/3        -</span><br><span class="line">  10    0050.7966.6804    SecureSticky                  Gi0/3        -</span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line">Total Addresses <span class="keyword">in</span><span class="built_in"> System </span>(excluding one mac per port)     : 1</span><br><span class="line">Max Addresses limit <span class="keyword">in</span><span class="built_in"> System </span>(excluding one mac per port) : 4096</span><br><span class="line"></span><br><span class="line">SW1#show port-security<span class="built_in"> interface </span>g0/3</span><br><span class="line">Port Security              : Enabled</span><br><span class="line">Port Status                : Secure-shutdown</span><br><span class="line">Violation Mode             : Shutdown</span><br><span class="line">Aging Time                 : 0 mins</span><br><span class="line">Aging<span class="built_in"> Type </span>                : Absolute</span><br><span class="line">SecureStatic<span class="built_in"> Address </span>Aging : Disabled</span><br><span class="line">Maximum MAC Addresses      : 2</span><br><span class="line">Total MAC Addresses        : 2</span><br><span class="line">Configured MAC Addresses   : 0</span><br><span class="line">Sticky MAC Addresses       : 2</span><br><span class="line">Last Source Address:Vlan   : 0050.7966.6805:10</span><br><span class="line">Security Violation Count   : 1</span><br><span class="line"></span><br><span class="line"><span class="comment">#MAC地址表</span></span><br><span class="line">SW1#show mac address-table </span><br><span class="line">          Mac<span class="built_in"> Address </span>Table</span><br><span class="line">-------------------------------------------</span><br><span class="line"></span><br><span class="line">Vlan    Mac<span class="built_in"> Address </span>     <span class="built_in"> Type </span>       Ports</span><br><span class="line">----    -----------       --------    -----</span><br><span class="line">  10    0050.7966.6803    STATIC      Gi0/3 </span><br><span class="line">  10    0050.7966.6804    STATIC      Gi0/3 </span><br><span class="line">  10    0050.7966.6805    STATIC      Gi0/1 </span><br><span class="line">  10    0050.7966.6806    STATIC      Gi0/2 </span><br><span class="line">Total Mac Addresses <span class="keyword">for</span> this criterion: 4</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-DHCP欺骗攻击的防范"><a href="#2-DHCP欺骗攻击的防范" class="headerlink" title="2.DHCP欺骗攻击的防范"></a>2.DHCP欺骗攻击的防范</h2><h3 id="采用DHCP管理的常见问题"><a href="#采用DHCP管理的常见问题" class="headerlink" title="采用DHCP管理的常见问题"></a>采用DHCP管理的常见问题</h3><p>采用DHCP server可以自动为用户设置网络IP地址、掩码、网关、 DNS、 WINS等网络参数，简化了用户网络设置，提高了管理效率。但在DHCP管理使用上也存在着一些另网管人员比较问题，常见的有:</p>
+<ul>
+<li>DHCP server 的冒充</li>
+<li>DHCP server的DOS攻击</li>
+<li>有些用户随便指定地址，造成网络地址冲突</li>
+</ul>
+<p>由于DHCP 的运作机制，通常服务器和客户端没有认证机制，如果网络上存在多台DHCP服务器将会给网络照成混乱。由于不小心配置了DHCP服务器引起的网络混乱也非常常见。黑客利用类似Goobler的工具可以发出大量带有不同源MAC地址的DHCP请求，直到DHCP服务器对应网段的所有地址被占用，此类攻击既可以造成DOS的破坏，也可和DHCP服务器欺诈结合将流量重指到意图进行流量截取的恶意节点。DHCP服务器欺诈可能是故意的，也可能是无意启动DHCP服务器功能，恶意用户发放错误的IP地址、 DNS服务器信息或默认网关信息，以此来实现流量的截取。一个“不可靠”的DHCP服务器通常被用来与攻击者协作，对网络实施“中间人”MITM(Man-In-The-Middle)攻击。中间人攻击是一种攻击者利用正常的协议处理行为来更改两个终端之间的正常通信数据流而形成的一种攻击技术。首先一个黑客会广播许多含有欺骗性MAC地址的DHCP请求(动态主机配置请求)， 从而耗尽合法DHCP服务器上的地址空间，一旦其空间地址被耗尽，这个“不可靠”的DHCP服务器就开始向“用户”的DHCP请求进行应答了， 这些应答信息中将包括DNS服务器和一个默认网关的信息， 这些信息就被用来实施一个MITM中间人攻击。黑客也可以利用冒充的DHCP服务器，为用户分配一个经过修改的DNS Server，在用户毫无察觉的情况下被引导在预先配置好的假金融网站或电子商务网站，骗取用户帐户和密码，这种攻击是非常恶劣的。</p>
+<h3 id="DHCP-Snooping技术概述"><a href="#DHCP-Snooping技术概述" class="headerlink" title="DHCP Snooping技术概述"></a>DHCP Snooping技术概述</h3><p>DHCP Snooping技术是DHCP安全特性，通过建立和维护DHCP Snooping绑定表过滤不可信任的DHCP信息，这些信息是指来自不信任区域的DHCP信息。 通过截取一个虚拟局域网内的DHCP信息，交换机可以在用户和DHCP服务器之间担任就像小型安全防火墙这样的角色， “DHCP监听”功能基于动态地址分配建立了一个DHCP绑定表，并将该表存贮在交换机里。在没有DHCP的环境中，如数据中心，绑定条目可能被静态定义，每个DHCP绑定条目包含客户端地址(一个静态地址或者一个从DHCP服务器上获取的地址)、客户端MAC地址、端口、 VLAN ID、租借时间、绑定类型(静态的或者动态的)。如下表所示:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SW1#show<span class="built_in"> ip </span>dhcp snooping binding </span><br><span class="line">MacAddress          IpAddress        Lease(sec) <span class="built_in"> Type </span>         <span class="built_in"> VLAN </span> Interface</span><br><span class="line">------------------  ---------------  ----------  -------------  ----  --------------------</span><br><span class="line">Total number of bindings: 0</span><br><span class="line"></span><br><span class="line">SW1#show<span class="built_in"> ip </span>dhcp snooping binding </span><br><span class="line">MacAddress          IpAddress        Lease(sec) <span class="built_in"> Type </span>         <span class="built_in"> VLAN </span> Interface</span><br><span class="line">------------------  ---------------  ----------  -------------  ----  --------------------</span><br><span class="line">00:50:79:66:68:05   192.168.10.21    86391       dhcp-snooping   10    GigabitEthernet0/1</span><br><span class="line">Total number of bindings: 1</span><br></pre></td></tr></table></figure>
+
+<p>这张表不仅解决了DHCP用户的IP和端口跟踪定位问题， 为用户管理提供方便，而且还供给动态ARP检测(DAI)和IP SourceGuard使用。</p>
+<h4 id="基本防范"><a href="#基本防范" class="headerlink" title="基本防范"></a>基本防范</h4><p>了防止这种类型的攻击， Catalyst DHCP侦听(DHCPSnooping)功能可有效阻止此类攻击，当打开此功能，所有用户端口除非特别设置，被认为不可信任端口，不应该作出任何DHCP响应，因此欺诈DHCP响应包被交换机阻断，合法的DHCP服务器端口或上连端口应被设置为信任端口。Catalyst DHCP侦听(DHCP Snooping)对于下边介绍的其他阻止ARP欺骗和IP/MAC地址的欺骗是必需的。首先定义交换机上的信任端口和不信任端口， 对于不信任端口的DHCP报文进行截获和嗅探， DROP掉来自这些端口的非正常DHCP响应应报文。<br><img src="https://ws1.sinaimg.cn/large/bca6cfably1g60541wvh8j211b0ofad5.jpg" alt><br>基本配置如下：</p>
+<figure class="highlight bash"><figcaption><span>Core基本配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">interface GigabitEthernet0/3</span><br><span class="line"> switchport trunk encapsulation dot1q</span><br><span class="line"> switchport mode trunk</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"><span class="comment">#排除</span></span><br><span class="line">ip dhcp excluded-address 192.168.10.200 192.168.10.254</span><br><span class="line">ip dhcp excluded-address 192.168.10.1 192.168.10.20</span><br><span class="line"><span class="comment">#建立名为 pool10 的地址池</span></span><br><span class="line">ip dhcp pool pool10</span><br><span class="line"> <span class="comment">#网络地址段</span></span><br><span class="line"> network 192.168.10.0 255.255.255.0</span><br><span class="line"> <span class="comment">#网关地址</span></span><br><span class="line"> default-router 192.168.10.1</span><br><span class="line"> <span class="comment">#dns地址</span></span><br><span class="line"> dns-server 192.168.10.1</span><br><span class="line"> <span class="comment">#租期</span></span><br><span class="line"> lease 8</span><br><span class="line"><span class="comment">#配置绑定MAC的地址池</span></span><br><span class="line"><span class="comment">#绑定的IP地址，一个地址池只能绑定一个IP,如果多个IP,需要多个dhcp池。</span></span><br><span class="line"><span class="comment">#client-identifier  01xx.xxxx.xxxx.xx  MAC地址变成指定的格式</span></span><br><span class="line">ip dhcp pool pool10_liu</span><br><span class="line"> host 192.168.10.15 255.255.255.0</span><br><span class="line"> client-identifier 0100.5079.6668.06</span><br><span class="line"> default-router 192.168.10.1 </span><br><span class="line"> dns-server 192.168.10.1</span><br><span class="line">!</span><br><span class="line">interface Vlan10</span><br><span class="line"> ip address 192.168.10.1 255.255.255.0</span><br><span class="line"><span class="comment">#关闭dhcp服务</span></span><br><span class="line">Core(config)<span class="comment">#no service dhcp </span></span><br><span class="line"><span class="comment">#清除dhcp绑定表</span></span><br><span class="line">Core<span class="comment">#clear ip dhcp binding ?</span></span><br><span class="line">  *        Clear all automatic bindings</span><br><span class="line">  A.B.C.D  Clear a specific binding</span><br><span class="line">  vrf      DHCP vrf bindings</span><br><span class="line"><span class="comment">#显示dhcp binding</span></span><br><span class="line">Core<span class="comment">#show ip dhcp binding </span></span><br><span class="line">Bindings from all pools not associated with VRF:</span><br><span class="line">IP address      Client-ID/              Lease expiration        Type       State      Interface</span><br><span class="line">                Hardware address/</span><br><span class="line">                User name</span><br><span class="line">192.168.10.15   0100.5079.6668.06       Infinite                Manual     Active     Unknown</span><br><span class="line">192.168.10.25   0100.5079.6668.05       Jan 09 2018 12:39 AM    Automatic  Active     Vlan10</span><br><span class="line"></span><br><span class="line"><span class="comment">#显示dhcp池信息</span></span><br><span class="line">Core<span class="comment">#show ip dhcp pool </span></span><br><span class="line"></span><br><span class="line">Pool pool10 :</span><br><span class="line"> Utilization mark (high/low)    : 100 / 0</span><br><span class="line"> Subnet size (first/next)       : 0 / 0 </span><br><span class="line"> Total addresses                : 254</span><br><span class="line"> Leased addresses               : 1</span><br><span class="line"> Excluded addresses             : 76</span><br><span class="line"> Pending event                  : none</span><br><span class="line"> 1 subnet is currently <span class="keyword">in</span> the pool :</span><br><span class="line"> Current index        IP address range                    Leased/Excluded/Total</span><br><span class="line"> 192.168.10.26        192.168.10.1     - 192.168.10.254    1     / 76    / 254  </span><br><span class="line"></span><br><span class="line">Pool pool10_liu :</span><br><span class="line"> Utilization mark (high/low)    : 100 / 0</span><br><span class="line"> Subnet size (first/next)       : 0 / 0 </span><br><span class="line"> Total addresses                : 1</span><br><span class="line"> Leased addresses               : 1</span><br><span class="line"> Excluded addresses             : 1</span><br><span class="line"> Pending event                  : none</span><br><span class="line"> 0 subnet is currently <span class="keyword">in</span> the pool :</span><br><span class="line"> Current index        IP address range                    Leased/Excluded/Total</span><br><span class="line"> 192.168.10.15        192.168.10.15    - 192.168.10.15     1     / 1     / 1    </span><br><span class="line"></span><br><span class="line">Core<span class="comment">#show ip dhcp server statistics</span></span><br><span class="line"><span class="comment">#显示冲突地址</span></span><br><span class="line">Core<span class="comment">#show ip dhcp conflict</span></span><br><span class="line"><span class="comment">#显示租期</span></span><br><span class="line">Core<span class="comment">#show dhcp lease</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>SW1配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在vlan10上开启dhcp snooping</span></span><br><span class="line">ip dhcp snooping vlan 10</span><br><span class="line"><span class="comment">#DHCP客户端获取IP经过的所有启dhcp snooping的交换机 关闭DHCP请求中添加option 82报文的特性</span></span><br><span class="line"><span class="comment">#设置交换机是否为非信任端口收到的DHCP报文插入Option 82，默认即为开启状态</span></span><br><span class="line">no ip dhcp snooping information option //非信任端口收到的DHCP请求报文的源MAC和CHADDR字段是否相同，以防止DHCP耗竭攻击，该功能默认即为开启。  如果是cisco设备作为dhcp server 需要 no掉这项 ，或者 用其他方式---</span><br><span class="line"><span class="comment">#打开dhcp snooping</span></span><br><span class="line">ip dhcp snooping</span><br><span class="line">errdisable recovery cause psecure-violation</span><br><span class="line"><span class="comment">#自动恢复dhcp-rate-limit触发的惩罚行为</span></span><br><span class="line">errdisable recovery cause dhcp-rate-limit</span><br><span class="line">errdisable recovery interval 30</span><br><span class="line">interface GigabitEthernet0/0</span><br><span class="line"> switchport trunk encapsulation dot1q</span><br><span class="line"> switchport mode trunk</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"> <span class="comment">#设置为trust端口，默认为untrust</span></span><br><span class="line"> ip dhcp snooping trust</span><br><span class="line">!</span><br><span class="line">interface GigabitEthernet0/1</span><br><span class="line"> switchport access vlan 10</span><br><span class="line"> switchport mode access</span><br><span class="line"> switchport port-security maximum 2</span><br><span class="line"> switchport port-security mac-address sticky</span><br><span class="line"> switchport port-security mac-address sticky 0050.7966.6805</span><br><span class="line"> switchport port-security</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"> <span class="comment"># 限制非信任端口的DHCP报文速率为每秒15个包（默认即为每秒15个包）如果不配该语句，则show ip dhcp snooping的结果将不列出没有该语句的端口，可选速率范围为1-2048</span></span><br><span class="line"> ip dhcp snooping <span class="built_in">limit</span> rate 15</span><br><span class="line"></span><br><span class="line">SW1(config)<span class="comment">#ip dhcp snooping database flash:dhcp_snooping.db</span></span><br><span class="line">SW1(config)<span class="comment">#ip dhcp snooping database tftp://192.168.2.5/SW1/dhcp_snooping.db</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">SW1(config)<span class="comment">#ip dhcp snooping database write-delay 300 </span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">SW1(config)<span class="comment">#ip dhcp snooping database timeout 300</span></span><br><span class="line">SW1(config)<span class="comment">#</span></span><br><span class="line"><span class="comment">#从数据库文件中读取DHCP监听表</span></span><br><span class="line">SW1<span class="comment">#renew ip dhcp snooping database flash:dhcp_snooping.db</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#特权模式命令：手工添加一条DHCP监听绑定条目；expiry为时间值，即为监听绑定中的lease（租期）</span></span><br><span class="line">SW1<span class="comment">#ip dhcp snooping binding 000f.1fc5.1008 vlan 10 192.168.10.131 interface G0/2 expiry 692000        </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#显示当前DHCP监听的各选项和各端口的配置情况</span></span><br><span class="line">SW1<span class="comment">#show ip dhcp snooping </span></span><br><span class="line">Switch DHCP snooping is enabled</span><br><span class="line">Switch DHCP gleaning is disabled</span><br><span class="line">DHCP snooping is configured on following VLANs:</span><br><span class="line">10</span><br><span class="line">DHCP snooping is operational on following VLANs:</span><br><span class="line">10</span><br><span class="line">DHCP snooping is configured on the following L3 Interfaces:</span><br><span class="line"></span><br><span class="line">Insertion of option 82 is disabled</span><br><span class="line">   circuit-id default format: vlan-mod-port</span><br><span class="line">   remote-id: 5000.0002.0000 (MAC)</span><br><span class="line">Option 82 on untrusted port is not allowed</span><br><span class="line">Verification of hwaddr field is enabled</span><br><span class="line">Verification of giaddr field is enabled</span><br><span class="line">DHCP snooping trust/rate is configured on the following Interfaces:</span><br><span class="line"></span><br><span class="line">Interface                  Trusted    Allow option    Rate <span class="built_in">limit</span> (pps)</span><br><span class="line">-----------------------    -------    ------------    ----------------   </span><br><span class="line">GigabitEthernet0/0         yes        yes             unlimited</span><br><span class="line">  Custom circuit-ids:</span><br><span class="line">GigabitEthernet0/1         no         no              15        </span><br><span class="line">  Custom circuit-ids:</span><br><span class="line">GigabitEthernet0/2         no         no              15        </span><br><span class="line">Interface                  Trusted    Allow option    Rate <span class="built_in">limit</span> (pps)</span><br><span class="line">-----------------------    -------    ------------    ----------------   </span><br><span class="line">  Custom circuit-ids:</span><br><span class="line">GigabitEthernet0/3         no         no              15        </span><br><span class="line">  Custom circuit-ids:</span><br><span class="line"><span class="comment">#显示当前的DHCP监听绑定表</span></span><br><span class="line">SW1<span class="comment">#show ip dhcp snooping binding </span></span><br><span class="line">MacAddress          IpAddress        Lease(sec)  Type           VLAN  Interface</span><br><span class="line">------------------  ---------------  ----------  -------------  ----  --------------------</span><br><span class="line">50:00:00:04:00:00   192.168.10.26    687952      dhcp-snooping   10    GigabitEthernet1/0</span><br><span class="line">00:50:79:66:68:06   192.168.10.15    70142       dhcp-snooping   10    GigabitEthernet0/2</span><br><span class="line">00:50:79:66:68:05   192.168.10.25    674957      dhcp-snooping   10    GigabitEthernet0/1</span><br><span class="line">Total number of bindings: 3</span><br><span class="line"><span class="comment">#显示DHCP监听绑定数据库的相关信息</span></span><br><span class="line">SW1<span class="comment">#show ip dh snooping database </span></span><br><span class="line">Agent URL : flash:dhcp_snooping.db</span><br><span class="line">Write delay Timer : 300 seconds</span><br><span class="line">Abort Timer : 300 seconds</span><br><span class="line"></span><br><span class="line">Agent Running : No</span><br><span class="line">Delay Timer Expiry : Not Running</span><br><span class="line">Abort Timer Expiry : Not Running</span><br><span class="line"></span><br><span class="line">Last Succeded Time : 04:20:55 UTC Mon Jan 1 2018</span><br><span class="line">Last Failed Time : None</span><br><span class="line">Last Failed Reason : No failure recorded.</span><br><span class="line"></span><br><span class="line">Total Attempts       :        3   Startup Failures :        0</span><br><span class="line">Successful Transfers :        3   Failed Transfers :        0</span><br><span class="line">Successful Reads     :        0   Failed Reads     :        0</span><br><span class="line">Successful Writes    :        3   Failed Writes    :        0</span><br><span class="line">Media Failures       :        0</span><br><span class="line"><span class="comment">#显示DHCP监听的工作统计</span></span><br><span class="line">SW1<span class="comment">#show ip dh snooping statistics </span></span><br><span class="line"> Packets Forwarded                                     = 23</span><br><span class="line"> Packets Dropped                                       = 23</span><br><span class="line"> Packets Dropped From untrusted ports                  = 23</span><br><span class="line"><span class="comment">#清除DHCP监听绑定表；注意：本命令无法对单一条目进行清楚，只能清除所有条目</span></span><br><span class="line">SW1<span class="comment">#clear ip dhcp snooping binding      </span></span><br><span class="line"><span class="comment">#清空DHCP监听绑定数据库的计数器</span></span><br><span class="line">SW1<span class="comment">#clear ip dhcp snooping database statistics    </span></span><br><span class="line"><span class="comment">#清空DHCP监听的工作统计计数器</span></span><br><span class="line">SW1<span class="comment">#clear ip dhcp snooping statistics</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>思科设备做dhcp server时的两种配置方法</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">A方案：</span><br><span class="line">接入和汇聚交换机上：</span><br><span class="line"><span class="literal">no</span><span class="built_in"> ip </span>dhcp snooping information option</span><br><span class="line"></span><br><span class="line">B方案：</span><br><span class="line">汇聚交换机上：</span><br><span class="line">ip dhcp snooping information option allow-untrusted</span><br><span class="line">DHCP服务器上：</span><br><span class="line">int<span class="built_in"> vlan </span>10</span><br><span class="line">ip dhcp relay information trusted</span><br><span class="line">或者全局下：</span><br><span class="line">ip dhcp relay information trust-all</span><br></pre></td></tr></table></figure>
+
+<p>测试证明：使用B方式适合于使用DAI+ipsourceGuard（ipsourceGuard是检测ip和mac的情况，只检测ip地址不会有什么问题，A和B都可以），A方式就支持的不好，客户端获取IP地址很慢，影响使用体验，要想快必须在端口安全时敲上switchport port-security mac-address sticky，使端口下接入的pc的mac地址写入到交换机的静态表里面，提高第二次pc获取ip地址的速度。</p>
+<h4 id="高级防范"><a href="#高级防范" class="headerlink" title="高级防范"></a>高级防范</h4><p>对于类似Gobbler的DHCP 服务的DOS攻击可以利用前面的Port Security限制源MAC地址数目加以阻止，对于有些用户随便指定地址，造成网络地址冲突也可以利用后面提到的DAI和IP Source Guard技术。<br>有些复杂的DHCP攻击工具可以产生单一源MAC地址、变化DHCP Payload信息的DHCP请求，当打开DHCP侦听功能，交换机对非信任端口的DHCP请求进行源MAC地址和DHCP Payload信息的比较，如不匹配就阻断此请求。</p>
+<h2 id="3-ARP欺骗攻击原理和防范（必须和DHCP-Snooping联用）"><a href="#3-ARP欺骗攻击原理和防范（必须和DHCP-Snooping联用）" class="headerlink" title="3. ARP欺骗攻击原理和防范（必须和DHCP Snooping联用）"></a>3. ARP欺骗攻击原理和防范（必须和DHCP Snooping联用）</h2><h3 id="ARP欺骗攻击原理"><a href="#ARP欺骗攻击原理" class="headerlink" title="ARP欺骗攻击原理"></a>ARP欺骗攻击原理</h3><p>ARP是用来实现MAC地址和IP地址的绑定，这样两个工作站才可以通讯，通讯发起方的工作站以MAC广播方式发送ARP请求，拥有此IP地址的工作站给予ARP应答，送回自己的IP和MAC地址。ARP协议同时支持一种无请求ARP功能， 局域网段上的所有工作站收到主动ARP广播，会将发送者的MAC地址和其宣布的IP地址保存，覆盖以前cache的同一IP地址和对应的MAC地址，主动式ARP合法的用途是用来以备份的工作站替换失败的工作站。由于ARP无任何身份真实校验机制，黑客程序发送误导的主动式ARP使网络流量重指经过恶意攻击者的计算机， 变成某个局域网段IP会话的中间人，达到窃取甚至篡改正常传输的功效。黑客程序发送的主动式ARP采用发送方私有MAC地址而非广播地址，通讯接收方根本不会知道自己的IP地址被取代。为了保持ARP欺骗的持续有效，黑客程序每隔30秒重发此私有主动式ARP。黑客工具如ettercap、dsniff和arpspoof都能实现ARP哄骗功能。像ettercap可提供一个用户界面，在对本地网段所有工作站的扫描后， ettercap显示所有工作站源地址和目的地址，选择ARP哄骗命令后，除数据包的截取外，内置的智能sniffer功能还可以针对不同IP会话获取password信息。<br>这里举个例子，假定同一个局域网内，有3 台主机通过交换机<br>相连:<br>A 主 机 :IP 地 址 为 192.168.0.1 ， MAC 地 址 为<br>01:01:01:01:01:01<br>B 主 机 :IP 地 址 为 192.168.0.2 ， MAC 地 址 为<br>02:02:02:02:02:02<br>C 主 机 :IP 地 址 为 192.168.0.3 ， MAC 地 址 为<br>03:03:03:03:03:03<br>B 主机对A 和C 进行欺骗的前奏就是发送假的ARP 应答包，在收到B主机发来的ARP应答后， A主机应知道:到 192.168.0.3 的 数 据 包 应 该 发 到 MAC 地 址 为020202020202 的主机;C 主机也知道:到192.168.0.1 的数据包应该发到MAC 地址为020202020202 的主机。这样， A 和C都认为对方的MAC 地址是020202020202，实际上这就是B 主机所需得到的结果。当然，因为ARP 缓存表项是动态更新的，其中动态生成的映射有个生命期，一般是两分钟，如果再没有新的信息更新， ARP 映射项会自动去除。所以， B还有一个“任务”，那就是一直连续不断地向A 和C 发送这种虚假的ARP 响应包，让其ARP缓存中一直保持被毒害了的映射表项。现在，如果A 和C 要进行通信，实际上彼此发送的数据包都会先到达B 主机，这时，如果B 不做进一步处理， A 和C 之间的通信就无法正常建立，B 也就达不到“嗅探”通信内容的目的，因此，B 要对“错误”收到的数据包进行一番修改， 然后转发到正确的目的地，而修改的内容，无非是将目的MAC 和源MAC 地址进行替换。如此一来，在A 和C 看来，彼此发送的数据包都是直接到达对方的，但在B 来看，自己担当的就是“第三者”的角色。 这种嗅探方法，也被称作中间人MIMT(Man-In-The-Middle)的方法。</p>
+<h3 id="防范方法-1"><a href="#防范方法-1" class="headerlink" title="防范方法"></a>防范方法</h3><p>这些攻击都可以通过动态ARP检查(DAI， Dynamic ARP Inspection)来防止，它可以帮助保证接入交换机只传递“合法的”的ARP请求和应答信息。 DHCP Snooping监听绑定表包括IP地址与MAC地址的绑定信息并将其与特定的交换机端口相关联，动态ARP检测(DAI-Dynamic ARP Inspection)可以用来检查所有非信任端口的ARP请求和应答(主动式ARP和非主动式ARP)， 确保应答来自真正的ARP所有者。 Catalyst交换机通过检查端口纪录的DHCP绑定信息和ARP应答的IP地址决定是否真正的ARP所有者，不合法的ARP包将被删除。<br>DAI配置针对VLAN，对于同一VLAN内的接口可以开启DAI也可以关闭，如果ARP包从一个可信任的接口接受到，就不需要做任何检查，如果ARP包在一个不可信任的接口上接受到，该包就只<br>能在绑定信息被证明合法的情况下才会被转发出去。这样， DHCPSnooping对于DAI来说也成为必不可少的， DAI是动态使用的，相连的客户端主机不需要进行任何设置上的改变。对于没有使用DHCP的服务器个别机器可以采用静态添加DHCP绑定表或ARPaccess-list实现</p>
+<p>另外，通过DAI可以控制某个端口的ARP请求报文频率。一旦ARP请求频率的频率超过预先设定的阈值，立即关闭该端口。该功能可以阻止网络扫描工具的使用，同时对有大量ARP报文特征的病毒或攻击也可以起到阻断作用。</p>
+<p><strong>配置示例</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">ip arp inspection<span class="built_in"> vlan </span>10</span><br><span class="line">ip arp inspection log-buffer entries 1024</span><br><span class="line">ip arp inspection log-buffer logs 1024 interval 10</span><br><span class="line">!</span><br><span class="line">!</span><br><span class="line">!</span><br><span class="line">ip dhcp snooping<span class="built_in"> vlan </span>10</span><br><span class="line"><span class="literal">no</span><span class="built_in"> ip </span>dhcp snooping information option</span><br><span class="line">ip dhcp snooping database flash:dhcp_snooping.db</span><br><span class="line">ip dhcp snooping</span><br><span class="line">!</span><br><span class="line">errdisable recovery cause psecure-violation</span><br><span class="line">errdisable recovery cause dhcp-rate-limit</span><br><span class="line">errdisable recovery interval 30</span><br><span class="line">!</span><br><span class="line">interface GigabitEthernet0/0</span><br><span class="line"> switchport trunk encapsulation dot1q</span><br><span class="line"> switchport mode trunk</span><br><span class="line"><span class="built_in"> ip </span>arp inspection trust</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"><span class="built_in"> ip </span>dhcp snooping trust</span><br><span class="line">!</span><br><span class="line">interface GigabitEthernet0/1</span><br><span class="line"> switchport access<span class="built_in"> vlan </span>10</span><br><span class="line"> switchport mode access</span><br><span class="line"> switchport port-security maximum 2</span><br><span class="line"> switchport port-security mac-address sticky</span><br><span class="line"> switchport port-security mac-address sticky 0050.7966.6805</span><br><span class="line"> switchport port-security</span><br><span class="line"><span class="built_in"> ip </span>arp inspection limit rate 20 #默认为15</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"><span class="built_in"> ip </span>dhcp snooping limit rate 15</span><br><span class="line"> </span><br><span class="line"><span class="comment">#对于没有使用DHCP设备可以采用下面办法:</span></span><br><span class="line">arp access-list static-arp</span><br><span class="line">permit<span class="built_in"> ip </span>host 192.168.10.254 mac host 0009.6b88.d387</span><br><span class="line">ip arp inspection<span class="built_in"> filter </span>static-arp<span class="built_in"> vlan </span>10 </span><br><span class="line"><span class="comment">#或者手工绑定dhcp snooping表</span></span><br><span class="line">SW1#ip dhcp snooping binding 000f.1fc5.1008<span class="built_in"> vlan </span>10 192.168.10.131<span class="built_in"> interface </span>G0/2 expiry 692000 </span><br><span class="line"></span><br><span class="line"><span class="comment">#配置DAI后的效果</span></span><br><span class="line"><span class="comment">#在配置DAI技术的接口上，用户端不能采用指定地址地址将接入网络。</span></span><br><span class="line"><span class="comment">#由于DAI检查 DHCP snooping绑定表中的IP和MAC对应关系，无法实施中间人攻击，攻击工具失效。下表为实施中间人攻击是交换机的警告</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-IP-MAC欺骗的防范"><a href="#4-IP-MAC欺骗的防范" class="headerlink" title="4. IP/MAC欺骗的防范"></a>4. IP/MAC欺骗的防范</h2><p>常见的欺骗攻击的种类和目的<br>除了ARP欺骗外，黑客经常使用的另一手法是IP地址欺骗。常见的欺骗种类有MAC欺骗、 IP欺骗、 IP/MAC欺骗，其目的一般为伪造身份或者获取针对IP/MAC的特权。此方法也被广泛用作DOS攻击，目前较多的攻击是:Ping OfDeath、 Syn flood、 ICMP Unreacheable Storm。如黑客冒用A地址对B地址发出大量的ping包，所有ping应答都会返回到B地址，通过这种方式来实施拒绝服务(DoS)攻击，这样可以掩盖攻击系统的真实身份。富有侵略性的TCP SYN洪泛攻击来源于一个欺骗性的IP地址，它是利用TCP三次握手会话对服务器进行颠覆的又一种攻击方式。一个IP地址欺骗攻击者可以通过手动修改地址或者运行一个实施地址欺骗的程序来假冒一个合法地址。另外病毒和木马的攻击也会使用欺骗的源IP地址。互联网上的蠕虫病毒也往往利用欺骗技术来掩盖它们真实的源头主机。</p>
+<p>IP/MAC欺骗的防范（必须和DHCP Snooping联用）<br>Catalyst IP源地址保护(IP Source Guard)功能打开后，可以根据DHCP侦听记录的IP绑定表动态产生PVACL，强制来自此端口流量的源地址符合DHCP绑定表的记录，这样攻击者就无法通过假定一个合法用户的IP地址来实施攻击了， 这个功能将只允许对拥有合法源地址的数据保进行转发， 合法源地址是与IP地址绑定表保持一致的， 它也是来源于DHCP Snooping绑定表。 因此， DHCPSnooping功能对于这个功能的动态实现也是必不可少的，对于那些没有用到DHCP的网络环境来说，该绑定表也可以静态配置。IP Source Guard不但可以配置成对IP地址的过滤也可以配置成对MAC地址的过滤，这样，就只有IP地址和MAC地址都于DHCP Snooping绑定表匹配的通信包才能够被允许传输。此时，必 须 将 IP 源 地 址 保 护 IP Source Guard 与 端 口 安 全 PortSecurity功能共同使用，并且需要DHCP服务器支持Option 82时，才可以抵御IP地址+MAC地址的欺骗。</p>
+<p>与DAI不同的是， DAI仅仅检查ARP报文， IP Source Guard对所有经过定义IP Source Guard检查的端口的报文都要检测源地址。通过在交换机上配置IP Source Guard，可以过滤掉非法的IP/MAC地址，包含用户故意修改的和病毒、攻击等造成的。同时解决了IP地址冲突问题。</p>
+<h3 id="IP源防护"><a href="#IP源防护" class="headerlink" title="IP源防护"></a>IP源防护</h3><p>1、源IP地址过滤<br>2、源IP和源MAC地址过滤</p>
+<p>使用源IP地址过滤时，IP源防护和端口安全是相互独立的。使用源IP和源MAC地址过滤时，二者合并为一，数据包源IP和源MAC地址必须符合IP源绑定表中的条目才能转发，并且为了确保DHCP工作正常，启用DHCP监听时必须启用option 82。</p>
+<p>IP 源防护配置：</p>
+<p>源IP地址过滤：</p>
+<p>switch(config-if)#ip verify source<br>//Cisco 35系列交换机命令</p>
+<p>switch(config-if)#ip verify source vlan dhcp-snooping<br>//Cisco 45、65系列交换机命令</p>
+<p>源IP和源MAC地址过滤：</p>
+<p>首先要启用端口安全(switchport port-security),然后启用IP源防护<br>switch(config-if)#ip verify source port-security<br>//Cisco 35系列交换机命令</p>
+<p>switch(config-if)#ip verify source vlan dhcp-snooping port-security<br>//Cisco 45、65系列交换机命令</p>
+<p>静态IP源绑定命令<br>switch(config)#ip source binding mac-address vlan vlan-number ip-address interface interface-type interface-number</p>
+<figure class="highlight bash"><figcaption><span>源IP和源MAC地址过滤</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">ip arp inspection vlan 10</span><br><span class="line">ip arp inspection <span class="built_in">log</span>-buffer entries 1024</span><br><span class="line">ip arp inspection <span class="built_in">log</span>-buffer logs 1024 interval 10</span><br><span class="line">!</span><br><span class="line">!</span><br><span class="line">!</span><br><span class="line">ip dhcp snooping vlan 10</span><br><span class="line"><span class="comment">#此项必须开启</span></span><br><span class="line">ip dhcp snooping information option</span><br><span class="line"><span class="comment">###Cisco设备做dhcp server (核心层交换机)</span></span><br><span class="line"><span class="comment">###Core(config)#ip dhcp relay information trust-all</span></span><br><span class="line"><span class="comment">###汇聚层交换机</span></span><br><span class="line"><span class="comment">###ip dhcp snooping information option allow-untrusted</span></span><br><span class="line"></span><br><span class="line">ip dhcp snooping database flash:dhcp_snooping.db</span><br><span class="line">ip dhcp snooping</span><br><span class="line">ip cef</span><br><span class="line">no ipv6 cef</span><br><span class="line">!</span><br><span class="line">!</span><br><span class="line">errdisable recovery cause psecure-violation</span><br><span class="line">errdisable recovery cause dhcp-rate-limit</span><br><span class="line">errdisable recovery interval 30</span><br><span class="line">!</span><br><span class="line">interface GigabitEthernet0/1</span><br><span class="line"> switchport access vlan 10</span><br><span class="line"> switchport mode access</span><br><span class="line"> switchport port-security maximum 2</span><br><span class="line"> switchport port-security mac-address sticky</span><br><span class="line"> switchport port-security mac-address sticky 0050.7966.6805</span><br><span class="line"> switchport port-security</span><br><span class="line"> ip arp inspection <span class="built_in">limit</span> rate 20</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"> <span class="comment">#开启ip mac源防护</span></span><br><span class="line"> ip verify <span class="built_in">source</span> port-security</span><br><span class="line"> ip dhcp snooping <span class="built_in">limit</span> rate 15</span><br><span class="line"> </span><br><span class="line"> <span class="comment">#手工绑定静态dhcp snooping表</span></span><br><span class="line"> SW1<span class="comment"># ip dhcp snooping binding 0050.7966.6803 vlan 10 192.168.10.2  interface gi$</span></span><br><span class="line"> 或者 二者只能选一个 </span><br><span class="line"> <span class="comment">#静态IP源绑定</span></span><br><span class="line"> SW1(config)<span class="comment">#ip source binding 0050.7966.6803 vlan 10 192.168.10.2 interface Gi0/3</span></span><br><span class="line"> </span><br><span class="line">SW1<span class="comment">#show ip dhcp snooping binding </span></span><br><span class="line">MacAddress          IpAddress        Lease(sec)  Type           VLAN  Interface</span><br><span class="line">------------------  ---------------  ----------  -------------  ----  --------------------</span><br><span class="line">50:00:00:04:00:00   192.168.10.26    679939      dhcp-snooping   10    GigabitEthernet1/0</span><br><span class="line">00:50:79:66:68:03   192.168.10.2     692704      dhcp-snooping   10    GigabitEthernet0/3</span><br><span class="line">00:50:79:66:68:06   192.168.10.15    62129       dhcp-snooping   10    GigabitEthernet0/2</span><br><span class="line">00:50:79:66:68:05   192.168.10.25    666943      dhcp-snooping   10    GigabitEthernet0/1</span><br><span class="line">Total number of bindings: 4</span><br><span class="line"></span><br><span class="line">SW1<span class="comment">#show ip source binding </span></span><br><span class="line">MacAddress          IpAddress        Lease(sec)  Type           VLAN  Interface</span><br><span class="line">------------------  ---------------  ----------  -------------  ----  --------------------</span><br><span class="line">50:00:00:04:00:00   192.168.10.26    679986      dhcp-snooping   10    GigabitEthernet1/0</span><br><span class="line">00:50:79:66:68:03   192.168.10.2     692751      dhcp-snooping   10    GigabitEthernet0/3</span><br><span class="line">00:50:79:66:68:06   192.168.10.15    62176       dhcp-snooping   10    GigabitEthernet0/2</span><br><span class="line">00:50:79:66:68:05   192.168.10.25    666991      dhcp-snooping   10    GigabitEthernet0/1</span><br><span class="line">Total number of bindings: 4</span><br></pre></td></tr></table></figure>
+
+<h2 id="switch-Security-交换机的主要配置文件"><a href="#switch-Security-交换机的主要配置文件" class="headerlink" title="switch Security 交换机的主要配置文件"></a>switch Security 交换机的主要配置文件</h2><figure class="highlight bash"><figcaption><span>接入层交换机主要配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ip dhcp relay information trust-all</span><br><span class="line">ip dhcp excluded-address 192.168.10.200 192.168.10.254</span><br><span class="line">ip dhcp excluded-address 192.168.10.1 192.168.10.20</span><br><span class="line">!</span><br><span class="line">ip dhcp pool pool10</span><br><span class="line"> network 192.168.10.0 255.255.255.0</span><br><span class="line"> default-router 192.168.10.1 </span><br><span class="line"> dns-server 192.168.10.1 </span><br><span class="line"> lease 8</span><br><span class="line">!</span><br><span class="line">ip dhcp pool pool10_liu</span><br><span class="line"> host 192.168.10.15 255.255.255.0</span><br><span class="line"> client-identifier 0100.5079.6668.06</span><br><span class="line"> default-router 192.168.10.1 </span><br><span class="line"> dns-server 192.168.10.1 </span><br><span class="line"> !</span><br><span class="line">interface GigabitEthernet0/3</span><br><span class="line"> switchport trunk encapsulation dot1q</span><br><span class="line"> switchport mode trunk</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"> !</span><br><span class="line">interface Vlan10</span><br><span class="line"> ip address 192.168.10.1 255.255.255.0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>核心层交换机主要配置 充当dhcp server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">ip arp inspection vlan 10</span><br><span class="line">ip arp inspection <span class="built_in">log</span>-buffer entries 1024</span><br><span class="line">ip arp inspection <span class="built_in">log</span>-buffer logs 1024 interval 10</span><br><span class="line">!</span><br><span class="line">!</span><br><span class="line">!</span><br><span class="line">ip dhcp snooping vlan 10</span><br><span class="line">ip dhcp snooping database flash:dhcp_snooping.db</span><br><span class="line">ip dhcp snooping</span><br><span class="line">errdisable recovery cause psecure-violation</span><br><span class="line">errdisable recovery cause dhcp-rate-limit</span><br><span class="line">errdisable recovery interval 30</span><br><span class="line">interface GigabitEthernet0/0</span><br><span class="line"> switchport trunk encapsulation dot1q</span><br><span class="line"> switchport mode trunk</span><br><span class="line"> ip arp inspection trust</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"> ip dhcp snooping trust</span><br><span class="line">!</span><br><span class="line">interface GigabitEthernet0/1</span><br><span class="line"> switchport access vlan 10</span><br><span class="line"> switchport mode access</span><br><span class="line"> switchport port-security maximum 2</span><br><span class="line"> switchport port-security mac-address sticky</span><br><span class="line"> switchport port-security mac-address sticky 0050.7966.6805</span><br><span class="line"> switchport port-security</span><br><span class="line"> ip arp inspection <span class="built_in">limit</span> rate 20</span><br><span class="line"> media-type rj45</span><br><span class="line"> negotiation auto</span><br><span class="line"> ip verify <span class="built_in">source</span> port-security</span><br><span class="line"> ip dhcp snooping <span class="built_in">limit</span> rate 15</span><br><span class="line"></span><br><span class="line"><span class="comment">#为静态ip手动添加表项</span></span><br><span class="line"><span class="comment">#手工绑定静态dhcp snooping表</span></span><br><span class="line">SW1<span class="comment"># ip dhcp snooping binding 0050.7966.6803 vlan 10 192.168.10.2  interface gi$</span></span><br><span class="line">或者 二者只能选一个 </span><br><span class="line"><span class="comment">#静态IP源绑定</span></span><br><span class="line">SW1(config)<span class="comment">#ip source binding 0050.7966.6803 vlan 10 192.168.10.2 interface Gi0/3</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>caomaoLBL</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/08/15/switch-security/" title="Cisco交换机安全">http://yoursite.com/2019/08/15/switch-security/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/交换机安全/" rel="tag"><i class="fa fa-tag"></i> 交换机安全</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/09/linux-lvm/" rel="next" title="Linux LVM 逻辑卷管理">
+                <i class="fa fa-chevron-left"></i> Linux LVM 逻辑卷管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/19/nginx-location/" rel="prev" title="nginx配置location总结">
+                nginx配置location总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">caomaoLBL</p>
+  <div class="site-description motion-element" itemprop="description">it运维，图片分享</div>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/caomaolbl" title="GitHub &rarr; https://github.com/caomaolbl" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:caomaolbl@163.com" title="E-Mail &rarr; mailto:caomaolbl@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/" title="https://hexo.io/zh-cn/docs/" rel="noopener" target="_blank">Hexo中文文档</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/" title="https://theme-next.org/" rel="noopener" target="_blank">Hexo NexT主题</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://realfavicongenerator.net/" title="https://realfavicongenerator.net/" rel="noopener" target="_blank">Favicon Generator图片转换</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://kennylee26.gitbooks.io/markdown/content/index.html" title="https://kennylee26.gitbooks.io/markdown/content/index.html" rel="noopener" target="_blank">Markdown中文文档</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.zybuluo.com/mdeditor" title="https://www.zybuluo.com/mdeditor" rel="noopener" target="_blank">Cmd Markdown 编辑阅读器</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://cv.ftqq.com/" title="http://cv.ftqq.com/" rel="noopener" target="_blank">冷熊简历(在线简历制作)</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.typora.io/" title="https://www.typora.io/" rel="noopener" target="_blank">typora</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Molunerfinn/PicGo/releases" title="https://github.com/Molunerfinn/PicGo/releases" rel="noopener" target="_blank">PicGo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.fontawesome.com.cn/faicons/" title="http://www.fontawesome.com.cn/faicons/" rel="noopener" target="_blank">Font Awesome</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MAC地址泛滥攻击的防范"><span class="nav-number">2.</span> <span class="nav-text">1. MAC地址泛滥攻击的防范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC泛滥攻击的原理和危害"><span class="nav-number">2.1.</span> <span class="nav-text">MAC泛滥攻击的原理和危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防范方法"><span class="nav-number">2.2.</span> <span class="nav-text">防范方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DHCP欺骗攻击的防范"><span class="nav-number">3.</span> <span class="nav-text">2.DHCP欺骗攻击的防范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#采用DHCP管理的常见问题"><span class="nav-number">3.1.</span> <span class="nav-text">采用DHCP管理的常见问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP-Snooping技术概述"><span class="nav-number">3.2.</span> <span class="nav-text">DHCP Snooping技术概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本防范"><span class="nav-number">3.2.1.</span> <span class="nav-text">基本防范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高级防范"><span class="nav-number">3.2.2.</span> <span class="nav-text">高级防范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ARP欺骗攻击原理和防范（必须和DHCP-Snooping联用）"><span class="nav-number">4.</span> <span class="nav-text">3. ARP欺骗攻击原理和防范（必须和DHCP Snooping联用）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP欺骗攻击原理"><span class="nav-number">4.1.</span> <span class="nav-text">ARP欺骗攻击原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防范方法-1"><span class="nav-number">4.2.</span> <span class="nav-text">防范方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-IP-MAC欺骗的防范"><span class="nav-number">5.</span> <span class="nav-text">4. IP/MAC欺骗的防范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP源防护"><span class="nav-number">5.1.</span> <span class="nav-text">IP源防护</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-Security-交换机的主要配置文件"><span class="nav-number">6.</span> <span class="nav-text">switch Security 交换机的主要配置文件</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user-circle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caomaoLBL</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>

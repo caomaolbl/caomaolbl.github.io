@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="这是一个书写范例">
+<meta name="keywords" content="nginx,php,测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="书写范例">
+<meta property="og:url" content="http://yoursite.com/2019/08/05/Writing-example/index.html">
+<meta property="og:site_name" content="草帽小站">
+<meta property="og:description" content="这是一个书写范例">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/bca6cfably1g5t6clt81fj22yo1o0qtm.jpg">
+<meta property="og:image" content="http://yoursite.com/images/abc.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/08/05/Writing-example/example.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/08/05/Writing-example/example.jpg">
+<meta property="og:updated_time" content="2019-08-09T02:48:58.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="书写范例">
+<meta name="twitter:description" content="这是一个书写范例">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/bca6cfably1g5t6clt81fj22yo1o0qtm.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/08/05/Writing-example/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>书写范例 | 草帽小站</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">草帽小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">落霞与孤鹜齐飞，秋水共长天一色</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/Writing-example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="caomaoLBL">
+      <meta itemprop="description" content="it运维，图片分享">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草帽小站">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">书写范例
+
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-05 20:25:20" itemprop="dateCreated datePublished" datetime="2019-08-05T20:25:20+08:00">2019-08-05</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-09 10:48:58" itemprop="dateModified" datetime="2019-08-09T10:48:58+08:00">2019-08-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/Linux基础/" itemprop="url" rel="index"><span itemprop="name">Linux基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://ws1.sinaimg.cn/large/bca6cfably1g5t6clt81fj22yo1o0qtm.jpg" alt></p>
+<p>这是一个书写范例</p>
+<a id="more"></a>
+
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><hr>
+<p>分割线</p>
+<p><strong>字体加粗</strong><br><em>斜体字</em></p>
+<ul>
+<li>整理知识，学习笔记</li>
+<li>发布日记，杂文，所见所想</li>
+<li>撰写发布技术文稿（代码支持）</li>
+</ul>
+<ul>
+<li>整理知识，学习笔记</li>
+<li>发布日记，杂文，所见所想</li>
+<li>撰写发布技术文稿（代码支持）</li>
+</ul>
+<blockquote>
+<p>简单note标签</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>整理知识，学习笔记</li>
+<li>发布日记，杂文，所见所想</li>
+<li>撰写发布技术文稿（代码支持）</li>
+<li>撰写发布学术论文（LaTeX 公式支持）</li>
+</ul>
+</blockquote>
+<p>插入图片</p>
+<p><img src="/images/abc.jpg" alt="tset-ss-ss"></p>
+<img src="/2019/08/05/Writing-example/example.jpg" title="这是一张图片">
+
+
+<p>链接<br><a href="https://www.zybuluo.com/cmd/" target="_blank" rel="noopener">Windows/Mac/Linux 全平台客户端</a></p>
+<blockquote>
+<p> 小型代码块 <code>Ctrl+Alt+N</code></p>
+</blockquote>
+<p><strong>制作一份待办事宜todo列表</strong></p>
+<ul>
+<li><input disabled type="checkbox"> 支持以 PDF 格式导出文稿</li>
+<li><input disabled type="checkbox"> 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</li>
+<li><input checked disabled type="checkbox"> 新增 Todo 列表功能</li>
+<li><input checked disabled type="checkbox"> 修复 LaTex 公式渲染问题</li>
+<li><input checked disabled type="checkbox"> 新增 LaTex 公式编号功能</li>
+</ul>
+<p><strong>插入高亮代码块</strong></p>
+<figure class="highlight python"><figcaption><span>Name</span><a href="http://www.baidu.com" target="_blank" rel="noopener">下载</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requires_authorization</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># A comment</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>居中引用方法一:</strong><br>  <blockquote class="blockquote-center">优秀的人，不是不合群，而是他们合群的人里面没有你</blockquote></p>
+<p><strong>居中引用方法二：</strong><br>  <blockquote class="blockquote-center"><p>落霞与孤与齐飞<br> 秋水共长天一色<br> <strong>滕王阁序</strong> </p>
+</blockquote></p>
+<p><strong>note标签</strong></p>
+<div class="note default">
+            <p>default </p>
+          </div>
+<div class="note primary">
+            <p>primary </p>
+          </div>
+<div class="note success">
+            <p>success </p>
+          </div>
+<div class="note info">
+            <p>info </p>
+          </div>
+<div class="note warning">
+            <p>warning </p>
+          </div>
+<div class="note danger">
+            <p>danger </p>
+          </div>
+
+<p><strong>lab标签</strong><br>I heard the echo, <span class="label default">from the valleys and the heart</span><br>Open to the lonely soul of <span class="label info">sickle harvesting</span><br>Repeat outrightly, but also repeat the well-being of<br>Eventually <span class="label warning">swaying in the desert oasis</span></p>
+<span class="label success">I believe</span> I am
+<span class="label primary">Born as the bright summer flowers</span>
+<p>Do not withered undefeated fiery demon rule<br>Heart rate and breathing to bear <span class="label danger">the load of the cumbersome</span><br>Bored</p>
+<p><strong>普通引用</strong><br>  <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote></p>
+<p><strong>普通引用 作者，出处</strong><br>  <blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote></p>
+<p><strong>普通引用 作者 链接</strong><br>  <blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="noopener">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="noopener">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote></p>
+  <img src="/2019/08/05/Writing-example/example.jpg" title="This is an example image">
+
+<p><strong>tabs标签</strong><br>  <div class="tabs" id="tab标签列表"><ul class="nav-tabs"><li class="tab active"><a href="#tab标签列表-1">tab1</a></li><li class="tab"><a href="#tab标签列表-2">标签页2</a></li><li class="tab"><a href="#tab标签列表-3">标签页3</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tab标签列表-1"><p>  标签页1文本内容</p></div><div class="tab-pane" id="tab标签列表-2"><p>  标签页2文本内容</p></div><div class="tab-pane" id="tab标签列表-3"><p>  标签页3文本内容</p></div></div></div></p>
+<p><strong>按钮标签</strong><br>  <a class="btn" href="#">文本</a></p>
+  <a class="btn" href="#">文本 & 标题</a>
+
+  <a class="btn" href="#"><i class="fa fa-home"></i>文本 & 图标</a>
+
+  <a class="btn" href="#"><i class="fa fa-home fa-fw fa-lg"></i>文本 & 大图标 (固定宽度)</a>
+
+<hr>
+<p><strong>引用站内链接</strong><br>可以通过如下语法引入站内文章的地址或链接：</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">post_path</span> slug %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">post_link</span> slug [title] %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>slug</code> 表示 <code>_post</code> 目录下的 Markdown 文件名。<br><code>post_path</code> 标签将会渲染为文章的地址，即 <code>permalink</code>；而 <code>post_link</code> 标签将会渲染为链接，可以通过 title 指定链接标题。</p>
+<figure class="highlight markdown"><figcaption><span>post_path范例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_path xxxxxx %&#125;</span><br></pre></td></tr></table></figure>
+
+/2019/08/05/Writing-example/
+
+
+<figure class="highlight markdown"><figcaption><span>post_link范例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_link xxxxxxx 书写范例文章 %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>生成 <a href="/2019/08/05/Writing-example/" title="书写范例">书写范例</a></p>
+<p>这种站内引用方式比直接使用 url 引用的形式更为可靠，因为即使修改了 permalink 格式，或者修改了文章的路由地址，只要 Markdown 文件名没有发生改变，引用链接都不会失效。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  line_number: true</span><br><span class="line">-auto_detect: false</span><br><span class="line">+auto_detect: true</span><br><span class="line">  tab_replace:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>IP管理</span><a href="http://www.baidu.com" target="_blank" rel="noopener">百度</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#### 作者 刘宝良</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###获取网卡数量</span></span><br><span class="line">netnum=$(nmcli device status | awk <span class="string">'/en*/&#123;print$1&#125;'</span> | wc -l)</span><br><span class="line"><span class="comment">#echo "$netnum"</span></span><br><span class="line"><span class="comment">###判断网卡数量是否等于1，不等于1手工输入列出的网卡名</span></span><br><span class="line"><span class="keyword">if</span> [ 1 -ne <span class="variable">$netnum</span> ]; <span class="keyword">then</span></span><br><span class="line">   netlist=$(nmcli device status | awk <span class="string">'/en*/&#123;print$1&#125;'</span>)</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Network Device Name is: <span class="variable">$netlist</span>"</span></span><br><span class="line">   <span class="built_in">read</span> -p <span class="string">"Press Network Device Name ,then press Enter :"</span> netname</span><br><span class="line">   nmcli device status | awk <span class="string">'/en*/&#123;print$1&#125;'</span> | grep <span class="variable">$netname</span> &gt; /dev/null</span><br><span class="line">      <span class="comment">###如果输入的值和列表中的不一样$?的返回值不等于0，脚本直接退出</span></span><br><span class="line">      <span class="keyword">if</span> [ $? != 0 ]; <span class="keyword">then</span></span><br><span class="line">         <span class="built_in">echo</span> <span class="string">"Network Device Name is ERROE........"</span></span><br><span class="line">         sleep 2</span><br><span class="line">         <span class="built_in">exit</span> 0</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line"><span class="comment">###等于1直接给netname赋值为这个网卡的名字</span></span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">   netname=$(nmcli device status | awk <span class="string">'/en*/&#123;print$1&#125;'</span>)</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">###输入IP地址、子网掩码、网关、DNS</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"Type the IP address for the Management Network:"</span> net_ip</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"Type the Netmask for the Management Network:"</span> net_netmask</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"Type the Gateway for the Management Network:"</span> net_gateway</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"Type the Dns for the Management Network:"</span> net_dns</span><br><span class="line"></span><br><span class="line"><span class="comment">###备份网络配置文件并删除然后新建</span></span><br><span class="line">\cp -f /etc/sysconfig/network-scripts/ifcfg-<span class="variable">$netname</span> /etc/sysconfig/network-scripts/ifcfg-<span class="variable">$netname</span>.bak &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">rm -f /etc/sysconfig/network-scripts/ifcfg-<span class="variable">$netname</span>  &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">touch /etc/sysconfig/network-scripts/ifcfg-<span class="variable">$netname</span></span><br><span class="line"></span><br><span class="line">cat &gt; /etc/sysconfig/network-scripts/ifcfg-<span class="variable">$netname</span> &lt;&lt; EOF</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=<span class="variable">$netname</span></span><br><span class="line">DEVICE=<span class="variable">$netname</span></span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=<span class="variable">$net_ip</span></span><br><span class="line">NETMASK=<span class="variable">$net_netmask</span></span><br><span class="line">GATEWAY=<span class="variable">$net_gateway</span></span><br><span class="line">DNS1=<span class="variable">$net_dns</span></span><br><span class="line">IPV6_PRIVACY=no</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"You must restart your OS or execute command 'systemctl restart network' to apply these changes"</span></span><br><span class="line">sleep 5</span><br><span class="line"><span class="built_in">exit</span> 1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><figcaption><span>ymal脚本</span><a href="http://www.google.com" target="_blank" rel="noopener">下载链接</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Install</span> <span class="string">WordPress,</span> <span class="string">MariaDB,</span> <span class="string">Nginx,</span> <span class="string">and</span> <span class="string">PHP-FPM</span></span><br><span class="line"><span class="attr">  hosts:</span> <span class="string">wordpress-server</span></span><br><span class="line"><span class="attr">  remote_user:</span> <span class="string">root</span></span><br><span class="line">  <span class="comment"># remote_user: user</span></span><br><span class="line">  <span class="comment"># sudo: yes</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  roles:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">common</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">mariadb</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">nginx</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">php-fpm</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">wordpress</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>caomaoLBL</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/08/05/Writing-example/" title="书写范例">http://yoursite.com/2019/08/05/Writing-example/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
+          
+            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+          
+            <a href="/tags/测试/" rel="tag"><i class="fa fa-tag"></i> 测试</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/07/firewalld/" rel="prev" title="firewalld防火墙">
+                firewalld防火墙 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">caomaoLBL</p>
+  <div class="site-description motion-element" itemprop="description">it运维，图片分享</div>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/caomaolbl" title="GitHub &rarr; https://github.com/caomaolbl" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:caomaolbl@163.com" title="E-Mail &rarr; mailto:caomaolbl@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/" title="https://hexo.io/zh-cn/docs/" rel="noopener" target="_blank">Hexo中文文档</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/" title="https://theme-next.org/" rel="noopener" target="_blank">Hexo NexT主题</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://realfavicongenerator.net/" title="https://realfavicongenerator.net/" rel="noopener" target="_blank">Favicon Generator图片转换</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://kennylee26.gitbooks.io/markdown/content/index.html" title="https://kennylee26.gitbooks.io/markdown/content/index.html" rel="noopener" target="_blank">Markdown中文文档</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.zybuluo.com/mdeditor" title="https://www.zybuluo.com/mdeditor" rel="noopener" target="_blank">Cmd Markdown 编辑阅读器</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://cv.ftqq.com/" title="http://cv.ftqq.com/" rel="noopener" target="_blank">冷熊简历(在线简历制作)</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.typora.io/" title="https://www.typora.io/" rel="noopener" target="_blank">typora</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Molunerfinn/PicGo/releases" title="https://github.com/Molunerfinn/PicGo/releases" rel="noopener" target="_blank">PicGo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.fontawesome.com.cn/faicons/" title="http://www.fontawesome.com.cn/faicons/" rel="noopener" target="_blank">Font Awesome</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一级标题"><span class="nav-number">1.</span> <span class="nav-text">一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二级标题"><span class="nav-number">1.1.</span> <span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级标题"><span class="nav-number">1.1.1.</span> <span class="nav-text">三级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四级标题"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">四级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五级标题"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">五级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#六级标题"><span class="nav-number">1.1.1.1.1.1.</span> <span class="nav-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user-circle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caomaoLBL</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>

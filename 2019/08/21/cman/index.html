@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":true,"show_result":true,"style":null},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="1.查看man-pages-zh-CN.noarch是否安装123456789101112131415161718[root@nginx02 ~]# yum list | grep zhman-pages-zh-CN.noarch                 1.5.2-4.el7                     @anacondaautocorr-zh.noarch">
+<meta name="keywords" content="man中文,cman">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux man手册中文显示">
+<meta property="og:url" content="http://yoursite.com/2019/08/21/cman/index.html">
+<meta property="og:site_name" content="草帽小站">
+<meta property="og:description" content="1.查看man-pages-zh-CN.noarch是否安装123456789101112131415161718[root@nginx02 ~]# yum list | grep zhman-pages-zh-CN.noarch                 1.5.2-4.el7                     @anacondaautocorr-zh.noarch">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-21T06:28:53.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux man手册中文显示">
+<meta name="twitter:description" content="1.查看man-pages-zh-CN.noarch是否安装123456789101112131415161718[root@nginx02 ~]# yum list | grep zhman-pages-zh-CN.noarch                 1.5.2-4.el7                     @anacondaautocorr-zh.noarch">
+  <link rel="canonical" href="http://yoursite.com/2019/08/21/cman/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>linux man手册中文显示 | 草帽小站</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">草帽小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">落霞与孤鹜齐飞，秋水共长天一色</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/cman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="caomaoLBL">
+      <meta itemprop="description" content="it运维，图片分享">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草帽小站">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">linux man手册中文显示
+
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-21 14:25:55 / 修改时间：14:28:53" itemprop="dateCreated datePublished" datetime="2019-08-21T14:25:55+08:00">2019-08-21</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/Linux基础/" itemprop="url" rel="index"><span itemprop="name">Linux基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="1-查看man-pages-zh-CN-noarch是否安装"><a href="#1-查看man-pages-zh-CN-noarch是否安装" class="headerlink" title="1.查看man-pages-zh-CN.noarch是否安装"></a>1.查看man-pages-zh-CN.noarch是否安装</h4><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@nginx02 ~]<span class="meta"># yum list | grep zh</span></span><br><span class="line">man-pages-zh-CN.noarch                 <span class="number">1.5</span><span class="number">.2</span><span class="number">-4.</span>el7                     @anaconda</span><br><span class="line">autocorr-zh.noarch                     <span class="number">1</span>:<span class="number">5.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">-19.</span>el7                base     </span><br><span class="line">calligra-l10n-zh_CN.noarch             <span class="number">2.9</span><span class="number">.10</span><span class="number">-1.</span>el7                    epel     </span><br><span class="line">calligra-l10n-zh_TW.noarch             <span class="number">2.9</span><span class="number">.10</span><span class="number">-1.</span>el7                    epel    </span><br><span class="line"></span><br><span class="line"><span class="meta">#如果未安装</span></span><br><span class="line">[root@nginx02 ~]<span class="meta"># yum install man-pages-zh-CN.noarch -y</span></span><br><span class="line"><span class="meta">#查看安装文件位置</span></span><br><span class="line">[root@nginx02 ~]<span class="meta"># rpm -ql man-pages-zh-CN.noarch</span></span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/doc/</span>man-pages-zh-CN<span class="number">-1.5</span><span class="number">.2</span></span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/doc/</span>man-pages-zh-CN<span class="number">-1.5</span><span class="number">.2</span>/COPYING</span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/doc/</span>man-pages-zh-CN<span class="number">-1.5</span><span class="number">.2</span>/NEWS</span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/doc/</span>man-pages-zh-CN<span class="number">-1.5</span><span class="number">.2</span>/README</span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/man/</span>zh_CN<span class="meta-keyword">/man1/</span>[<span class="number">.1</span>.gz</span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/man/</span>zh_CN<span class="meta-keyword">/man1/</span>a2p<span class="number">.1</span>.gz</span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/man/</span>zh_CN<span class="meta-keyword">/man1/</span>ab<span class="number">.1</span>.gz</span><br><span class="line"><span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/man/</span>zh_CN<span class="meta-keyword">/man1/</span>ac<span class="number">.1</span>.gz</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="2-新建cman命令作为中文查询手册"><a href="#2-新建cman命令作为中文查询手册" class="headerlink" title="2.新建cman命令作为中文查询手册"></a>2.新建cman命令作为中文查询手册</h4><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@nginx02 ~]# cd ~</span><br><span class="line">[root@nginx02 ~]# echo <span class="string">"alias cman='man -M /usr/share/man/zh_CN' "</span> &gt;&gt;.bash_profile</span><br><span class="line">[root@nginx02 ~]# source .bash_profile </span><br><span class="line">[root@nginx02 ~]# cman ls</span><br><span class="line"></span><br><span class="line"><span class="symbol">LS</span>(<span class="number">1</span>)                                   <span class="symbol">General</span> <span class="symbol">Commands</span> <span class="symbol">Manual</span>                                  <span class="symbol">LS</span>(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="symbol">NAME</span></span><br><span class="line">       ls, dir, vdir - 列目录内容</span><br><span class="line"></span><br><span class="line">提要</span><br><span class="line">       ls [选项] [文件名...]</span><br><span class="line"></span><br><span class="line">       <span class="symbol">POSIX</span> 标准选项: [-<span class="symbol">CFRacdilqrtu1</span>]</span><br><span class="line"></span><br><span class="line"><span class="symbol">GNU</span> 选项 (短格式):</span><br><span class="line">       [<span class="number">-1</span>abcdfgiklmnopqrstuxABCDFGLNQRSUX]  [-w  cols]  [-<span class="symbol">T</span>  cols] [-<span class="symbol">I</span> pattern] [--full-time] [--for‐</span><br><span class="line">       mat=&#123;long,verbose,commas,across,vertical,single-column&#125;]    [--sort=&#123;none,time,size,extension&#125;]</span><br><span class="line">       [--time=&#123;atime,access,use,ctime,status&#125;]  [--color[=&#123;none,auto,always&#125;]]  [--help]  [--version]</span><br><span class="line">       [--]</span><br><span class="line"></span><br><span class="line">描述（ <span class="symbol">DESCRIPTION</span> ）</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>caomaoLBL</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/08/21/cman/" title="linux man手册中文显示">http://yoursite.com/2019/08/21/cman/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/man中文/" rel="tag"><i class="fa fa-tag"></i> man中文</a>
+          
+            <a href="/tags/cman/" rel="tag"><i class="fa fa-tag"></i> cman</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/19/nginx-location/" rel="next" title="nginx配置location总结">
+                <i class="fa fa-chevron-left"></i> nginx配置location总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/21/rsync/" rel="prev" title="Rysnc数据同步工具">
+                Rysnc数据同步工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">caomaoLBL</p>
+  <div class="site-description motion-element" itemprop="description">it运维，图片分享</div>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/caomaolbl" title="GitHub &rarr; https://github.com/caomaolbl" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:caomaolbl@163.com" title="E-Mail &rarr; mailto:caomaolbl@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/" title="https://hexo.io/zh-cn/docs/" rel="noopener" target="_blank">Hexo中文文档</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/" title="https://theme-next.org/" rel="noopener" target="_blank">Hexo NexT主题</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://realfavicongenerator.net/" title="https://realfavicongenerator.net/" rel="noopener" target="_blank">Favicon Generator图片转换</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://kennylee26.gitbooks.io/markdown/content/index.html" title="https://kennylee26.gitbooks.io/markdown/content/index.html" rel="noopener" target="_blank">Markdown中文文档</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.zybuluo.com/mdeditor" title="https://www.zybuluo.com/mdeditor" rel="noopener" target="_blank">Cmd Markdown 编辑阅读器</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://cv.ftqq.com/" title="http://cv.ftqq.com/" rel="noopener" target="_blank">冷熊简历(在线简历制作)</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.typora.io/" title="https://www.typora.io/" rel="noopener" target="_blank">typora</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Molunerfinn/PicGo/releases" title="https://github.com/Molunerfinn/PicGo/releases" rel="noopener" target="_blank">PicGo</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.fontawesome.com.cn/faicons/" title="http://www.fontawesome.com.cn/faicons/" rel="noopener" target="_blank">Font Awesome</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-查看man-pages-zh-CN-noarch是否安装"><span class="nav-number">1.</span> <span class="nav-text">1.查看man-pages-zh-CN.noarch是否安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-新建cman命令作为中文查询手册"><span class="nav-number">2.</span> <span class="nav-text">2.新建cman命令作为中文查询手册</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user-circle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caomaoLBL</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
